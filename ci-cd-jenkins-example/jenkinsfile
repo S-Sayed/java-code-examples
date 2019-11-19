@@ -1,0 +1,30 @@
+pipeline 
+{
+	agent any
+
+ 	stages {
+  		stage ('Build') 
+  		{
+  			steps 
+  			{
+	      		'mvn clean install'
+	  		}
+  		}
+  
+	  	stage ('Run Test Cases') 
+	  	{
+		  	steps 
+		  	{
+		      
+		 	}
+	  	}
+  
+	   stage ('Run Artifact') 
+	   {
+	  		steps 
+	  		{
+		    	'mvn spring-boot:run'
+		  	}
+	  	}
+	}
+}
