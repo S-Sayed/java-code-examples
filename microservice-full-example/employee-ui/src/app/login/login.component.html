@@ -1,0 +1,33 @@
+<form [formGroup]="formGroup" (ngSubmit)="login()">
+  <table class="login-table"> 
+    <tr>
+      <td>
+        <mat-error *ngIf="invalid">Invalid Credentials</mat-error>
+      </td>
+    </tr>
+  
+    <tr>
+      <td>
+        <mat-form-field>
+          <input matInput type="text" [formControl]="email" name="email"  placeholder="Email" required />
+          <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+        </mat-form-field>  
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <mat-form-field>
+          <input matInput type="password" [formControl]="password" name="password" placeholder="Password" required/>
+          <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <button mat-raised-button color="accent" >Login</button>
+      </td>
+    </tr>
+  </table>
+</form>

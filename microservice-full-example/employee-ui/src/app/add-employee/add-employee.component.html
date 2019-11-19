@@ -1,0 +1,36 @@
+<form [formGroup]="formGroup" (ngSubmit)="addEmployee()">
+
+  <table>
+    <tr>
+      <td>Name</td>
+      <td>
+        <mat-form-field>
+          <input matInput type="text" formControlName="name"/>
+        </mat-form-field>
+        
+        <div *ngIf="submitted && formGroup.controls.name.errors?.required">Name is required</div>
+      </td>
+    </tr>
+
+  <tr>
+      <td>Department</td>
+      <td>
+        <mat-form-field>
+          <select matNativeControl required formControlName="department">
+            <option value="">Select</option>
+            <option *ngFor="let d of departments" [ngValue]="d">{{d.name}}</option>
+          </select>
+        </mat-form-field>
+
+        <div *ngIf="submitted && formGroup.controls.department.errors?.required">Department is required</div>
+      </td>
+    </tr>
+
+    <tr>
+      <td></td>
+      <td>
+        <button mat-raised-button color="accent">Add</button>
+      </td>
+    </tr>
+  </table>
+</form>

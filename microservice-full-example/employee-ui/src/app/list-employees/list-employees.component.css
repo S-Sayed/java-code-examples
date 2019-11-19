@@ -1,0 +1,32 @@
+.example-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+.htmlTable{
+    text-align: left;
+}
+
+.htmlTable tr th{
+    color: white;
+    background: #1ba8de;
+    height: 50px;
+}
+
+.htmlTable tr td{
+    border: 1px solid #1ba8de;
+    height: 50px;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+}
+
+.htmlTable button{
+    width: 60px;
+    height: 30px;
+    background: #1ba8de;
+    margin-left: 5px;
+    color: white;
+    font-weight: bold;
+    
+}

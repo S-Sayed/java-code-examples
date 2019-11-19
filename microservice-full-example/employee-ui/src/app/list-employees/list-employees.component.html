@@ -1,0 +1,80 @@
+<h2>Current Date is {{current_date | date:'yyyy-MM-dd'}}</h2>
+
+<button mat-raised-button color="primary" [routerLink]="['../add-employee']">
+  Add Employee
+</button>
+
+<h4>Without NG Material</h4>
+<div class="example-container ">
+<table class="htmlTable">
+  <thead>
+    <tr >
+      <th>
+        Id
+      </th>
+
+      <th>
+        Name
+      </th>
+
+      <th>
+        Department
+      </th>
+
+      <th>
+        Action
+      </th>
+    </tr>
+
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let e of employees">
+
+      <td>{{e.id}}</td>
+      <td>{{e.name}}</td>
+      <td>{{e.department.name}}</td>
+
+      <td>
+        <button (click)="edit(e)">Edit</button>
+        <button (click)="delete(e.id)">Delete</button>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+</div>
+<!-- to use angular material, add providers:[CdkColumnDef] in aapp.module.ts -->
+
+<h4> With NG Material </h4>
+<div class="example-container mat-elevation-z8">
+  <table mat-table #table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="deptId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Department </th>
+      <td mat-cell *matCellDef="let element"> {{element.department.name}} </td>
+    </ng-container>
+   
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let e">
+        <button mat-raised-button color="accent" (click)="edit(e)">Edit</button>
+        <button mat-raised-button color="accent" (click)="delete(e.id)">Delete</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

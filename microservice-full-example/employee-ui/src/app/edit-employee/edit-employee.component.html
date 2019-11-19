@@ -1,0 +1,44 @@
+<form [formGroup]="formGroup" (ngSubmit)="editEmployee()">
+  <table>
+    <tr>
+      <td>ID</td>
+      
+      <td>
+        {{formGroup.value.id}}
+      </td>
+    </tr>
+    
+    <tr>
+      <td>Name</td>
+      
+      <td>
+        <mat-form-field>
+          <input matInput type="text" formControlName="name"/>
+        </mat-form-field>
+        
+        <div *ngIf="submitted && formGroup.controls.name.errors?.required">Name is required</div>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>Deptartment</td>
+      <td>
+          <mat-form-field>
+            <select matNativeControl required formControlName="department" [compareWith]="selectOptionsCompare">
+              <option *ngFor="let d of departments" [ngValue]="d">{{d.name}}</option>
+            </select>
+          </mat-form-field>
+        
+          <div *ngIf="submitted && formGroup.controls.department.errors?.required">Deptartment is required</div>
+      </td>
+    </tr>
+  
+    <tr>
+      <td></td>
+      
+      <td>
+        <button mat-raised-button color="accent">Update</button>
+      </td>
+    </tr>
+  </table>
+</form>
