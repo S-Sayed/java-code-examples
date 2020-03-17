@@ -154,7 +154,7 @@ public class StreamFeaturesExample {
 		System.out.println("\ngenerateInfiniteStream using iterate and limit");
 		// working as function of operation in math f(x)
 		// 2 4 16 256 65536
-		// seed-value is 2 then do f(2) the f(f(2)) or f(2*2) then f(f(f(2))) or f(4*4)
+		// seed-value is 2 then do f(2) then f(f(2)) or f(2*2) then f(f(f(2))) or f(4*4)
 		// and so on
 		Stream<Integer> si4 = Stream.iterate(2, i -> i * i).limit(5);
 		si4.forEach(i -> System.out.print(i + " "));
@@ -162,7 +162,7 @@ public class StreamFeaturesExample {
 
 	private void generateStream() {
 		Stream<Integer> s = Stream.of(1, 2, 3, 4);
-		System.out.println(s); // you will get the stream pipleline memory reference
+		System.out.println(s); // you will get the stream pipeline memory reference
 		System.out.println("generateStream of integers");
 		s.forEach(i -> System.out.print(i));
 
@@ -210,6 +210,7 @@ public class StreamFeaturesExample {
 		Stream<Integer> parallel = l.parallelStream();
 		// parallel.forEach(e -> System.out.print(e));
 		// or both will give us same result
+		// the result will not be ordered unlike sequential
 		parallel.forEach(System.out::println); // 6 5 2 1 8 4 9 3 7 0
 		System.out.println();
 	}
@@ -218,7 +219,6 @@ public class StreamFeaturesExample {
 		System.out.println("\n testSequentialProcessing");
 		List<Integer> l = generateArrayList();
 		Stream<Integer> seq = l.stream();
-		// the result will be not ordered for example 6789 unlike sequential
 		seq.forEach((e) -> System.out.println(e)); // 0 1 2 3 4 5 6 7 8 9
 		System.out.println();
 	}
