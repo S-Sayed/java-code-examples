@@ -1,4 +1,4 @@
-package com.ssayed.javase;
+package com.ssayed.javase.equalAndHash;
 
 import java.util.ArrayList;
 import java.util.HashSet;
