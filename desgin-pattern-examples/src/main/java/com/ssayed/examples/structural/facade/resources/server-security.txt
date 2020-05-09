@@ -1,0 +1,3 @@
+weblogic_credentials: admin:admin
+db_credentials: root:admin
+log_path: c:\logs
