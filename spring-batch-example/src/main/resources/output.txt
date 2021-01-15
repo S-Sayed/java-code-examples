@@ -1,0 +1,37 @@
+reader read all customer information from CSV file (4 rows)
+then processor worked based on the chunk size (2 rows at time) followed by writer and repeat the process if still there is data need to be processed 
+	first round: 2 rows 
+	second round: 2 rows
+
+
+2021-01-15 21:09:45.744  INFO 15044 --- [           main] c.b.e.config.ItemReaderConfiguration     : customerItemReader - Thread Name: main
+
+2021-01-15 21:10:51.284  INFO 15044 --- [nio-8080-exec-1] o.s.b.c.l.support.SimpleJobLauncher      : Job: [SimpleJob: [name=customerJob]] launched with the following parameters: [{start_time=1610730651168}]
+2021-01-15 21:10:51.348  INFO 15044 --- [nio-8080-exec-1] o.s.batch.core.job.SimpleStepHandler     : Executing step: [customerStep]
+2021-01-15 21:10:51.398  INFO 15044 --- [nio-8080-exec-1] c.b.e.config.ItemProcessorConfiguration  : customerItemProcessor - Thread Name: http-nio-8080-exec-1
+2021-01-15 21:10:51.398  INFO 15044 --- [nio-8080-exec-1] c.b.e.config.ItemProcessorConfiguration  : customer-before-processing: Customer [id=1, name=sameh, mobileNumber=0506630501, email=test1@example.com]
+2021-01-15 21:10:51.398  INFO 15044 --- [nio-8080-exec-1] c.b.e.config.ItemProcessorConfiguration  : customer-after-processing: Customer [id=1, name=SAMEH, mobileNumber=0506630501, email=test1@example.com]
+2021-01-15 21:10:51.398  INFO 15044 --- [nio-8080-exec-1] c.b.e.config.ItemProcessorConfiguration  : customerItemProcessor - Thread Name: http-nio-8080-exec-1
+2021-01-15 21:10:51.398  INFO 15044 --- [nio-8080-exec-1] c.b.e.config.ItemProcessorConfiguration  : customer-before-processing: Customer [id=2, name=sila, mobileNumber=0506630502, email=test2@example.com]
+2021-01-15 21:10:51.399  INFO 15044 --- [nio-8080-exec-1] c.b.e.config.ItemProcessorConfiguration  : customer-after-processing: Customer [id=2, name=SILA, mobileNumber=0506630502, email=test2@example.com]
+2021-01-15 21:10:51.399  INFO 15044 --- [nio-8080-exec-1] c.b.e.config.ItemWriterConfiguration     : cusotmerItemWriter - Thread Name: http-nio-8080-exec-1
+2021-01-15 21:10:51.400  INFO 15044 --- [nio-8080-exec-1] c.b.e.config.ItemWriterConfiguration     : customers-size: 2
+Hibernate: select customer0_.id as id1_0_0_, customer0_.email as email2_0_0_, customer0_.mobile_number as mobile_n3_0_0_, customer0_.name as name4_0_0_ from customer customer0_ where customer0_.id=?
+Hibernate: select customer0_.id as id1_0_0_, customer0_.email as email2_0_0_, customer0_.mobile_number as mobile_n3_0_0_, customer0_.name as name4_0_0_ from customer customer0_ where customer0_.id=?
+Hibernate: insert into customer (email, mobile_number, name, id) values (?, ?, ?, ?)
+Hibernate: insert into customer (email, mobile_number, name, id) values (?, ?, ?, ?)
+2021-01-15 21:10:51.503  INFO 15044 --- [nio-8080-exec-1] c.b.e.config.ItemProcessorConfiguration  : customerItemProcessor - Thread Name: http-nio-8080-exec-1
+2021-01-15 21:10:51.503  INFO 15044 --- [nio-8080-exec-1] c.b.e.config.ItemProcessorConfiguration  : customer-before-processing: Customer [id=3, name=adam, mobileNumber=0506630503, email=test3@example.com]
+2021-01-15 21:10:51.503  INFO 15044 --- [nio-8080-exec-1] c.b.e.config.ItemProcessorConfiguration  : customer-after-processing: Customer [id=3, name=ADAM, mobileNumber=0506630503, email=test3@example.com]
+2021-01-15 21:10:51.504  INFO 15044 --- [nio-8080-exec-1] c.b.e.config.ItemProcessorConfiguration  : customerItemProcessor - Thread Name: http-nio-8080-exec-1
+2021-01-15 21:10:51.504  INFO 15044 --- [nio-8080-exec-1] c.b.e.config.ItemProcessorConfiguration  : customer-before-processing: Customer [id=4, name=yasmin, mobileNumber=0506630504, email=test4@example.com]
+2021-01-15 21:10:51.504  INFO 15044 --- [nio-8080-exec-1] c.b.e.config.ItemProcessorConfiguration  : customer-after-processing: Customer [id=4, name=YASMIN, mobileNumber=0506630504, email=test4@example.com]
+2021-01-15 21:10:51.504  INFO 15044 --- [nio-8080-exec-1] c.b.e.config.ItemWriterConfiguration     : cusotmerItemWriter - Thread Name: http-nio-8080-exec-1
+2021-01-15 21:10:51.504  INFO 15044 --- [nio-8080-exec-1] c.b.e.config.ItemWriterConfiguration     : customers-size: 2
+Hibernate: select customer0_.id as id1_0_0_, customer0_.email as email2_0_0_, customer0_.mobile_number as mobile_n3_0_0_, customer0_.name as name4_0_0_ from customer customer0_ where customer0_.id=?
+Hibernate: select customer0_.id as id1_0_0_, customer0_.email as email2_0_0_, customer0_.mobile_number as mobile_n3_0_0_, customer0_.name as name4_0_0_ from customer customer0_ where customer0_.id=?
+Hibernate: insert into customer (email, mobile_number, name, id) values (?, ?, ?, ?)
+Hibernate: insert into customer (email, mobile_number, name, id) values (?, ?, ?, ?)
+2021-01-15 21:10:51.517  INFO 15044 --- [nio-8080-exec-1] o.s.batch.core.step.AbstractStep         : Step: [customerStep] executed in 169ms
+2021-01-15 21:10:51.527  INFO 15044 --- [nio-8080-exec-1] o.s.b.c.l.support.SimpleJobLauncher      : Job: [SimpleJob: [name=customerJob]] completed with the following parameters: [{start_time=1610730651168}] and the following status: [COMPLETED] in 206ms
+2021-01-15 21:10:51.528  INFO 15044 --- [nio-8080-exec-1] c.b.example.controller.JobController     : controller - Thread Name: http-nio-8080-exec-1
