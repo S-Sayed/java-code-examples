@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hyke.mobilesearch.annotation.Log;
 import com.hyke.mobilesearch.model.Handset;
 import com.hyke.mobilesearch.model.SearchResult;
 import com.hyke.mobilesearch.service.MobileService;
@@ -22,6 +23,7 @@ public class MobileController {
 	private MobileService mobileService;
 
 	@GetMapping(value = "/search", produces = { MediaType.APPLICATION_JSON_VALUE })
+	@Log
 	public SearchResult search(@RequestParam Map<String, String> queryParameters) {
 		List<Handset> returnedHandsets = mobileService.search(queryParameters);
 		return new SearchResult(returnedHandsets.size(), returnedHandsets);
