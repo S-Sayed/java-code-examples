@@ -25,7 +25,7 @@ public class MobileController {
 	@GetMapping(value = "/search", produces = { MediaType.APPLICATION_JSON_VALUE })
 	@Log
 	public SearchResult search(@RequestParam Map<String, String> queryParameters) {
-		List<Handset> returnedHandsets = mobileService.search(queryParameters);
+		List<Handset> returnedHandsets = mobileService.getHandsets(queryParameters);
 		return new SearchResult(returnedHandsets.size(), returnedHandsets);
 	}
 }

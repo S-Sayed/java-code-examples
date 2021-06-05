@@ -21,8 +21,8 @@ public class MobileService {
 	@Autowired
 	private CacheHandler cacheHandler;
 
-	public List<Handset> search(Map<String, String> criteria) {
-		LOGGER.info("search - criteria {}", criteria);
+	public List<Handset> getHandsets(Map<String, String> criteria) {
+		LOGGER.info("getHandsets - criteria {}", criteria);
 
 		List<Handset> mobileDevices = cacheHandler.getAllHandsets();
 
