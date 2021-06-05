@@ -20,7 +20,7 @@ public class JsonMobileDAO implements MobileDAO {
 	@Value("${mobile.handsets.service.url}")
 	private String mobileHandsetServicesUrl;
 
-	public List<Handset> getAllDevices() {
+	public List<Handset> findAll() {
 		ResponseEntity<Handset[]> response = restTemplate.getForEntity(mobileHandsetServicesUrl, Handset[].class);
 		return Arrays.asList(response.getBody());
 	}

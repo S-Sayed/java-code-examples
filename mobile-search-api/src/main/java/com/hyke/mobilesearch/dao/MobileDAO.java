@@ -9,5 +9,5 @@ import com.hyke.mobilesearch.model.Handset;
 @Component
 public interface MobileDAO {
 
-	public abstract List<Handset> getAllDevices();
+	public abstract List<Handset> findAll();
 }
