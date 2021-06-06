@@ -22,39 +22,41 @@ public class HandsetPredicateGenerator {
 
 		criteria.entrySet().stream().filter(entry -> StringUtils.isNotBlank(entry.getValue())).forEach((entry) -> {
 
+			String value = entry.getValue().trim();
+
 			switch (entry.getKey().toLowerCase()) {
 			case "id":
-				predicates.add(HandsetPredicateUtil.isIdEqual(Integer.parseInt(entry.getValue())));
+				predicates.add(HandsetPredicateUtil.isIdEqual(Integer.parseInt(value)));
 				break;
 			case "brand":
-				predicates.add(HandsetPredicateUtil.isBrandEqual(entry.getValue()));
+				predicates.add(HandsetPredicateUtil.isBrandEqual(value));
 				break;
 			case "phone":
-				predicates.add(HandsetPredicateUtil.isPhoneEqual(entry.getValue()));
+				predicates.add(HandsetPredicateUtil.isPhoneContain(value));
 				break;
 			case "picture":
-				predicates.add(HandsetPredicateUtil.isPictureContain(entry.getValue()));
+				predicates.add(HandsetPredicateUtil.isPictureContain(value));
 				break;
 			case "announcedate":
-				predicates.add(HandsetPredicateUtil.isAnnounceDateContain(entry.getValue()));
+				predicates.add(HandsetPredicateUtil.isAnnounceDateContain(value));
 				break;
 			case "priceeur":
-				predicates.add(HandsetPredicateUtil.isPriceEurEqual(new BigDecimal(entry.getValue())));
+				predicates.add(HandsetPredicateUtil.isPriceEurEqual(new BigDecimal(value)));
 				break;
 			case "sim":
-				predicates.add(HandsetPredicateUtil.isSimContain(entry.getValue()));
+				predicates.add(HandsetPredicateUtil.isSimContain(value));
 				break;
 			case "resolution":
-				predicates.add(HandsetPredicateUtil.isResolutionContain(entry.getValue()));
+				predicates.add(HandsetPredicateUtil.isResolutionContain(value));
 				break;
 			case "audiojack":
-				predicates.add(HandsetPredicateUtil.isAudioJackEqual(entry.getValue()));
+				predicates.add(HandsetPredicateUtil.isAudioJackEqual(value));
 				break;
 			case "gps":
-				predicates.add(HandsetPredicateUtil.isGpsContain(entry.getValue()));
+				predicates.add(HandsetPredicateUtil.isGpsContain(value));
 				break;
 			case "battery":
-				predicates.add(HandsetPredicateUtil.isBatteryContain(entry.getValue()));
+				predicates.add(HandsetPredicateUtil.isBatteryContain(value));
 				break;
 			}
 		});

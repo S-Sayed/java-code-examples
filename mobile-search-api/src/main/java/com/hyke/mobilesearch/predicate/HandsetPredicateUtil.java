@@ -8,15 +8,15 @@ import com.hyke.mobilesearch.model.Handset;
 public class HandsetPredicateUtil {
 
 	public static Predicate<Handset> isIdEqual(Integer id) {
-		return device -> device.getId() == id;
+		return device -> device.getId().intValue() == id.intValue();
 	}
 
 	public static Predicate<Handset> isBrandEqual(String brand) {
 		return device -> device.getBrand().equalsIgnoreCase(brand);
 	}
 
-	public static Predicate<Handset> isPhoneEqual(String phone) {
-		return device -> device.getPhone().equalsIgnoreCase(phone);
+	public static Predicate<Handset> isPhoneContain(String phone) {
+		return device -> device.getPhone().toUpperCase().contains(phone.toUpperCase());
 	}
 
 	public static Predicate<Handset> isPictureContain(String picture) {
