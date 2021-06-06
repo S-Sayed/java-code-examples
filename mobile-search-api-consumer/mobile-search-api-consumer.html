@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Consume Mobile Search API</title>
+        <script src="js/jquery/jquery.min.js"></script>
+        <script src="js/mobile-search.js"></script>
+		
+		<style>
+			.blue-button {
+				background-color: lightskyblue;
+				width: 200px;
+				height: 50px;
+				font-weight: bold;
+				cursor: pointer;
+				border: 1px;
+				border-radius: 30px;
+			}
+		
+			.searchLabel {
+				font-weight: bold;
+				width: 150px;
+				float: left;
+			}
+			
+			.searchInputTxt {
+				width: 200px;
+				height: 30px;
+				border-radius: 10px;
+				border: 1px solid lightskyblue;
+			}
+			
+			.searchDiv {
+				margin: 5px;
+				float: left;
+			}
+			
+			#handsetsDiv{
+				float: left;
+			}
+			
+			#handsetsTableHeader, thead, th, td{
+				width: 100px;
+			}
+		</style>
+    </head>
+
+    <body>
+		<div class="searchDiv">
+			<label class="searchLabel">Id</label> 
+			<input id="id" type="text" class="searchInputTxt"/>
+		</div>
+		
+		<div class="searchDiv">
+			<label class="searchLabel">Brand</label> 
+			<input id="brand" type="text" class="searchInputTxt"/>
+		</div>
+		
+		<div class="searchDiv">
+			<label class="searchLabel">Phone</label> 
+			<input id="phone" type="text" class="searchInputTxt"/>
+		</div>
+		
+		<div class="searchDiv">
+			<label class="searchLabel">Picture</label> 
+			<input id="picture" type="text" class="searchInputTxt"/>
+		</div>
+		
+		<div class="searchDiv">
+			<label class="searchLabel">Announce Date</label> 
+			<input id="announceDate" type="text" class="searchInputTxt"/>
+		</div>
+		
+		<div class="searchDiv">
+			<label class="searchLabel">Price Eur</label> 
+			<input id="priceEur" type="text" class="searchInputTxt"/>
+		</div>
+		
+		<div class="searchDiv">
+			<label class="searchLabel">SIM</label> 
+			<input id="sim" type="text" class="searchInputTxt"/>
+		</div>
+		
+		<div class="searchDiv">
+			<label class="searchLabel">Resolution</label> 
+			<input id="resolution" type="text" class="searchInputTxt"/>
+		</div>
+		
+		<div class="searchDiv">
+			<label class="searchLabel">Audio Jack</label> 
+			<input id="audioJack" type="text" class="searchInputTxt"/>
+		</div>
+		
+		<div class="searchDiv">
+			<label class="searchLabel">GPS</label> 
+			<input id="gps" type="text" class="searchInputTxt"/>
+		</div>
+		
+		<div class="searchDiv">
+			<label class="searchLabel">Battery</label> 
+			<input id="battery" type="text" class="searchInputTxt"/>
+		</div>
+		
+		<div>
+			<button onclick="search()" class="blue-button"> Search </button>
+		</div>
+		
+        <div id="handsetsDiv">
+            <p id="totalNoOfHandsets"></p>
+			
+			<table id="handsetsTable" border="1 solid lightskyblue">
+				<thead id="handsetsTableHeader">
+					<tr style="background-color: lightskyblue;">
+						<th>#</th>
+						<th>Id</th>
+						<th>Brand</th>
+						<th>Phone</th>
+						<th>Picture</th>
+						<th>Announce Date</th>
+						<th>Price Eur</th>
+						<th>SIM</th>
+						<th>Resolution</th>
+						<th>Audio Jack</th>
+						<th>GPS</th>
+						<th>Battery</th>
+					</tr>
+				</thead>
+				
+				<tbody id="handsetsTableBody">
+					
+				</tbody>
+			</table>
+        </div>
+    </body>
+</html>
