@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -23,6 +24,17 @@ public class ControllerExceptionAdvice {
 		ErrorMessage errorMeg = new ErrorMessage(HttpStatus.NOT_FOUND.value(),
 				DateTimeUtil.formatDateTime(LocalDateTime.now(), DateTimeFormatEnum.YYYY_MM_DD_HH_MM_SS),
 				ex.getMessage());
+
+		return new ResponseEntity<ErrorMessage>(errorMeg, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(value = { EmptyResultDataAccessException.class })
+	public ResponseEntity<ErrorMessage> handleEmptyResultDataAccessException(EmptyResultDataAccessException ex) {
+		LOGGER.error("handleEmptyResultDataAccessException - exception: ", ex);
+
+		ErrorMessage errorMeg = new ErrorMessage(HttpStatus.NOT_FOUND.value(),
+				DateTimeUtil.formatDateTime(LocalDateTime.now(), DateTimeFormatEnum.YYYY_MM_DD_HH_MM_SS),
+				"book not found");
 
 		return new ResponseEntity<ErrorMessage>(errorMeg, HttpStatus.NOT_FOUND);
 	}
