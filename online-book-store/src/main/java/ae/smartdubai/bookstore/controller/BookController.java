@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import ae.smartdubai.bookstore.annotation.Log;
 import ae.smartdubai.bookstore.exception.BadRequestException;
 import ae.smartdubai.bookstore.exception.BookNotFoundException;
 import ae.smartdubai.bookstore.model.Book;
@@ -34,12 +35,14 @@ public class BookController {
 	@Autowired
 	private BookService bookService;
 
+	@Log
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE })
 	@ResponseStatus(value = HttpStatus.OK)
 	public List<Book> getAllBook() {
 		return bookService.getAllBooks();
 	}
 
+	@Log
 	@GetMapping(value = "/{isbn}", produces = { MediaType.APPLICATION_JSON_VALUE })
 	@ResponseStatus(value = HttpStatus.OK)
 	public Book getBookByIsbn(@PathVariable(required = true) String isbn) {
@@ -48,6 +51,7 @@ public class BookController {
 		return book;
 	}
 
+	@Log
 	@PostMapping(produces = { MediaType.APPLICATION_JSON_VALUE })
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public Book addBook(@RequestBody Book book) throws URISyntaxException {
@@ -56,6 +60,7 @@ public class BookController {
 		return bookService.addBook(book);
 	}
 
+	@Log
 	@PutMapping(value = "/{isbn}", produces = { MediaType.APPLICATION_JSON_VALUE })
 	@ResponseStatus(value = HttpStatus.OK)
 	public Book updateBook(@PathVariable(required = true) String isbn, @RequestBody Book book) {
@@ -64,6 +69,7 @@ public class BookController {
 		return bookService.updateBook(book);
 	}
 
+	@Log
 	@DeleteMapping(value = "/{isbn}", produces = { MediaType.APPLICATION_JSON_VALUE })
 	@ResponseStatus(value = HttpStatus.NO_CONTENT)
 	public void deleteBook(@PathVariable(required = true) String isbn) {
