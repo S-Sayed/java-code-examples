@@ -66,6 +66,7 @@ public class BookController {
 	public Book updateBook(@PathVariable(required = true) String isbn, @RequestBody Book book) {
 		LOGGER.info("updateBook - isbn <{}>, book <{}>", isbn, book);
 		Optional.ofNullable(book).orElseThrow(BadRequestException::new);
+		book.setIsbn(isbn);
 		return bookService.updateBook(book);
 	}
 
