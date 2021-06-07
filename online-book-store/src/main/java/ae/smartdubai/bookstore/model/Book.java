@@ -40,7 +40,7 @@ public class Book implements Serializable {
 	@JoinColumn(name = "AUTHOR_ID")
 	private Set<Author> authors = new HashSet<>();
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "CLASSIFICATION_CODE")
 	Classification classification = new Classification();
 
